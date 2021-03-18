@@ -1,0 +1,107 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+ <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Coupon</h1>
+    <p class="mb-4"><p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+         Generate code
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">package</label>
+                  <select class="form-control" id="package" name="package">
+                    <option>Bigginer</option>
+                    <option>Standard</option>
+                    <option>Platinum</option>
+                    <option>Ruby</option>
+                    <option>Gold</option>
+                    <option>Eminent</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">price</label>
+                    <select class="form-control" id="price" name="price">
+                      <option>3000</option>
+                      <option>5000</option>
+                      <option>10000</option>
+                      <option>20000</option>
+                      <option>50000</option>
+                      <option>100000</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-outline-info" value="Submit">
+              </form>
+        </div>
+      </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Coupon </h6>
+            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>code</th>
+                            <th>created</th>
+                            <th>price</th>
+                            <th> package</th>
+                            <th>active</th>
+                        </tr>
+                    </thead>
+                  
+                    <tbody>
+                        {% for obj in coupons %}
+                        <tr>
+                            <td>{{ obj.code }}</td>
+                            <td>{{ obj.created }}</td>
+                            <td> ₦{{ obj.price }}</td>
+                            <td>{{ obj.package }}</td>
+                            <td>{{ obj.active }}</td>
+                           
+                        </tr>
+                        {% endfor %}
+                   
+                    </tbody>
+                </table>
+            </div>
+            <ul class="pagination">
+                {% if coupons.has_previous %}
+                  <li><a  class="btn btn-outline-primary" href="?page={{ coupons.previous_page_number  }}">Previous</a></li>
+                  <!--li><a  class="btn btn-outline-primary" href="?page={{ coupons.previous_page_number  }}">{{ posts.previous_page_number  }}</a></li -->
+                  {% else %}
+                  <li class="disabled btn btn-outline-primary"><span>Previous</span></li>
+                {% endif %}
+                {% if coupons.has_next %}
+                  <li><a class="btn btn-outline-primary" href="?page={{ coupons.next_page_number }}">Next</a></li>
+                  <!--li><a class="btn btn-outline-primary" href="?page={{ coupons.paginator.num_pages }}">&raquo;</a></li -->
+                {% else %}
+                  <li class="disabled btn btn-outline-primary"><span>page ends</span></li>
+                {% endif %}
+              
+              
+              </ul>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br>
+<br>   
+<br>
+
+
+ <div class="container d-flex justify-content-center">
+     <div class="box ">
+         <div class="formheader ">
+          <center>
+            <img class="rounded-circle" src="{% static 'images/logo.jpg' %}" alt="logo" height="50">
+            <h5>Welcome to primevualt</h5>
+            <h6>Login into your account </h6>
+          </center>
+          
+         </div>
+         <form class="form" method="POST">
+             {% csrf_token %}
+             {{ form| crispy  }}
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+          
+    
+            <div class="text-center">
+              <p>Have an account? <a href="/login">Login</a></p>
+              <p>By signing up, signing in or continuing, I agree to Primevault’s Terms of Use and Privacy Policy.</p>
+             
+            </div>
+          </form>
+     </div>
+ </div>
+ {% endblock %}

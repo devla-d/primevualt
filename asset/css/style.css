@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+.box {
+    border-radius: 9px;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);;
+    max-width: 100%;
+    width: 400px;
+    min-height: 100vh;
+    margin: 0;
+}
+.formheader{
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 40px;
+
+}
+.form {
+    padding: 30px 40px;
+}
+.bocx {
+    padding: 40px;
+    width: 200px;
+    border-radius: 5px;
+    background-color:#fff;
+    box-shadow: rgba(0, 0, 0, 0.12);
+ 
+}
+.searchform input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+  }
+
+.boxcard {
+    border-radius: 5px;
+    background-color:#fff;
+    box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+}

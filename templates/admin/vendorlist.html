@@ -1,0 +1,82 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+{%load crispy_forms_tags %}
+<!-- Begin Page Content -->
+ <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Vendors</h1>
+    <p class="mb-4"><p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+         add vendor
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                 {{ form| crispy }}
+                <input type="submit" class="btn btn-outline-info" value="Submit">
+              </form>
+        </div>
+      </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Vendors </h6>
+            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>whatsapp</th>
+                        </tr>
+                    </thead>
+                  
+                    <tbody>
+                        {% for obj in vendors %}
+                        <tr>
+                            <td>{{ obj.user.username }}</td>
+                            <td>{{ obj.user.email }}</td>
+                            <td> {{ obj.whatsapp }}</td>
+                           
+                        </tr>
+                        {% endfor %}
+                   
+                    </tbody>
+                </table>
+            </div>
+            <ul class="pagination">
+                {% if coupons.has_previous %}
+                  <li><a  class="btn btn-outline-primary" href="?page={{ coupons.previous_page_number  }}">Previous</a></li>
+                  <!--li><a  class="btn btn-outline-primary" href="?page={{ coupons.previous_page_number  }}">{{ posts.previous_page_number  }}</a></li -->
+                  {% else %}
+                  <li class="disabled btn btn-outline-primary"><span>Previous</span></li>
+                {% endif %}
+                {% if coupons.has_next %}
+                  <li><a class="btn btn-outline-primary" href="?page={{ coupons.next_page_number }}">Next</a></li>
+                  <!--li><a class="btn btn-outline-primary" href="?page={{ coupons.paginator.num_pages }}">&raquo;</a></li -->
+                {% else %}
+                  <li class="disabled btn btn-outline-primary"><span>page ends</span></li>
+                {% endif %}
+              
+              
+              </ul>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+{% endblock %}

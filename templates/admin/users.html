@@ -1,0 +1,44 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container">
+        <div> <h2 class="text-primary text-center cap">Users</h2></div>
+        <form class="d-flex align-items-center justify-content-center searchform" action="" method="get">
+            <input  type="text" placeholder="Search..">
+        </form>
+        <br>
+        <div  class="boxcard">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Usename</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Refferals</th>
+                    <th scope="col">Investment</th>
+                    <th scope="col">Withdraw</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                    {% for account in accounts %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ account.username }}</td>
+                    <td>{{ account.email }}</td>
+                    <td>₦{{ account.balance }}</td>
+                    <td>{{ account.refferal }}</td>
+                    <td>₦{{ account.investment_amount }}</td>
+                    <td>₦{{ account.withdraw_amount }}</td>
+                  </tr>
+                  
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>        
+    <!-- End of Main Content -->
+
+{% endblock %}
+

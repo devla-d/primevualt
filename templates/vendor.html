@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  <br>
+
+<div class="container">
+    <center>
+        <h3>Contact any of our vendors to get coupon </h3>
+    </center>
+    <br>
+    <div class="col-lg-12">
+        <div class="row">
+            {% for vendor in vendors %}
+            <div class="col-md-4 mb-4">
+                <div class="card bg-light  shadow">
+                    <div class="card-body">
+                        {{ vendor.user.username }}
+                        <div class="text-white-50 small"><a href="{{ vendor.whatsapp }}" target="blank">whatsapp </a> </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

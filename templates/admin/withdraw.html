@@ -1,0 +1,47 @@
+{% extends 'admin/main.html' %}
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container">
+        <div> <h2 class="text-primary text-center cap">Withdraw</h2></div>
+        <form class="d-flex align-items-center justify-content-center searchform" action="" method="get">
+            <input  type="text" placeholder="Search..">
+        </form>
+        <br>
+        <div  class="boxcard">
+          {% if withdraws %}
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Usename</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                    {% for obj in withdraws %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ obj.user.username }}</td>
+                    <td>{{ obj.user.email }}</td>
+                    <td>₦{{ obj.amount }}</td>
+                    <td>{{ obj.time }}</td>
+                    <td>{{ obj.status }}</td>
+                   
+                  </tr>
+                  
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <h3 class="text-center">No current Widraws</h3>
+            {% endif %}
+        </div>
+    </div>        
+    <!-- End of Main Content -->
+
+{% endblock %}
+

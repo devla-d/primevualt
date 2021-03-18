@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<br>   
+<br>
+<style>
+    .pricingTable{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.pricingTable:before,
+.pricingTable:after{
+    content: '';
+    background: linear-gradient(to right, #FE6D94, #F7BA81);
+    height: calc(100% - 45px);
+    width: 80%;
+    border-radius: 0 0 200px 200px;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    z-index: -1;
+}
+.pricingTable:after{
+    background: #fff;
+    width: calc(80% - 10px);
+    height: calc(100% - 51px);
+}
+.pricingTable .pricingTable-header{
+    color: #222;
+    margin: 0 0 35px 0;
+}
+.pricingTable .title{
+    color: #fff;
+    background: linear-gradient(to right, #FE6D94, #F7BA81);
+    font-size: 33px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 17px 10px;
+    margin: 0 0 25px;
+    border-radius: 50px;
+}
+.pricingTable .price-value .amount{
+    font-size: 50px;
+    font-weight: 700;
+    display: block;
+}
+.pricingTable .price-value .duration{
+    font-size: 16px;
+    display: block;
+}
+.pricingTable .pricing-content{
+    text-align: left;
+    padding: 0;
+    margin: 0 0 30px;
+    list-style: none;
+    display: inline-block;
+}
+.pricingTable .pricing-content li{
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 0 0 28px;
+    margin: 0 0 15px;
+    position: relative;
+}
+.pricingTable .pricing-content li:last-child{ margin: 0; }
+.pricingTable .pricing-content li:before{
+    content: "\f00c";
+    color: #fff;
+    background: #5dbb54;
+    font-family: "Font Awesome 5 Free";
+    font-size: 12px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 21px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+}
+.pricingTable .pricing-content li.disable:before{
+    content: "\f00d";
+    background: #ed4444;
+    padding-right: 1px;
+}
+.pricingTable .pricingTable-signup a{
+    color: #fff;
+    background: linear-gradient(-135deg, #FE6D94, #F7BA81);
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    width: 100px;
+    height: 100px;
+    padding: 20px 15px;
+    margin: 0 auto;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: block;
+    transition: all 0.5s;
+}
+.pricingTable .pricingTable-signup a:hover{
+    text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.pricingTable.blue:before,
+.pricingTable.blue .title{
+    background: linear-gradient(to right, #896BEF, #60CEE7);
+}
+.pricingTable.blue .pricingTable-signup a{
+background: linear-gradient(-135deg, #896BEF, #60CEE7);
+}
+.pricingTable.green:before,
+.pricingTable.green .title{
+    background: linear-gradient(to right, #30CEBF, #47AA40);
+}
+.pricingTable.green .pricingTable-signup a{
+background: linear-gradient(-135deg, #30CEBF, #47AA40);
+}
+@media only screen and (max-width: 990px){
+    .pricingTable{ margin-bottom: 40px; }
+}
+
+</style>
+
+<div id="pricing" class="cards-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-center">Multiple Plan Options</h2>
+                <p class="p-heading p-large text-center">We have plans for you even at low rate you can earn more </p>
+            </div>
+        </div>
+        <div class="col-lg-12">
+
+<div class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <h3 class="title">Bigginer</h3>
+                        <div class="price-value">
+                            <span class="amount">₦3,000</span>
+                            <span class="duration">expected revenue ₦4,500 </span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>payment after 10days</li>
+                        <li> 50% interest </li>
+                    
+                    </ul>
+                    <div class="pricingTable-signup">
+                        <a href="{% url 'invest_pay' %}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <h3 class="title">Standard</h3>
+                        <div class="price-value">
+                            <span class="amount">₦5,000</span>
+                            <span class="duration">expected revenue ₦7,500</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>payment after 10days</li>
+                        <li> 50% interest </li>
+                    
+                    </ul>
+                    <div class="pricingTable-signup">
+                        <a href="{% url 'invest_pay' %}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <h3 class="title">Platinum</h3>
+                        <div class="price-value">
+                            <span class="amount">₦10,000</span>
+                            <span class="duration">expected revenue ₦15,000 </span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>payment after 10days</li>
+                        <li> 50% interest </li>
+                    
+                    </ul>
+                    <div class="pricingTable-signup">
+                        <a href="{% url 'invest_pay' %}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <h3 class="title">Ruby</h3>
+                        <div class="price-value">
+                            <span class="amount">₦20,000</span>
+                            <span class="duration">expected revenue ₦30,000</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>payment after 10days</li>
+                        <li> 50% interest </li>
+                    
+                    </ul>
+                    <div class="pricingTable-signup">
+                        <a href="{% url 'invest_pay' %}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header">
+                        <h3 class="title">Gold</h3>
+                        <div class="price-value">
+                            <span class="amount">₦50,000</span>
+                            <span class="duration">expected revenue ₦75,000</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>payment after 10days</li>
+                        <li> 50% interest </li>
+                    
+                    </ul>
+                    <div class="pricingTable-signup">
+                        <a href="{% url 'invest_pay' %}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable blue">
+                    <div class="pricingTable-header">
+                        <h3 class="title">Eminent</h3>
+                        <div class="price-value">
+                            <span class="amount">₦100,000</span>
+                            <span class="duration">expected revenue ₦150,000 </span>
+                        </div>
+
+                    </div>
+                    <ul class="pricing-content">
+                        <li>payment after 10days</li>
+                        <li> 50% interest </li>
+                    
+                    </ul>
+                  
+                    <div class="pricingTable-signup">
+                        <a href="{% url 'invest_pay' %}">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+
+
+    </div> 
+</div>
+
+
+
+ <br>
+ <br>
+ {% include 'footer.html' %}
+ {% endblock %}
+
+

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+
+<div class="container">
+    <div class="account-box">
+        <div class="span3 well">
+            <div class="d-flex justify-content-center">
+                {% for message in messages %}
+                  <h5 class="alert alert-{{ message.tags }}">{{  message }}</h5>
+                {% endfor %}
+              </div>
+              
+            <center>
+            <a href="#" ><img src="{{ user.profile_image.url }}" name="aboutme" width="180" height="180" class="img-circle"></a>
+            <h3>{{ user.username }}</h3>
+            <a href="{% url 'profile' %}" class="btn btn-md btn-primary">update profile</a>
+            </center>
+        </div>
+        <br>
+        <div class="col-xs-8 mt-2">
+            <h2 class="text-center text-primary">Your Dashboard</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card" style="  border-radius:1rem;">
+                        <div class="card-body bg-primary  p-0 text-white" style="padding: 10px;">
+                            
+                            <span class="text-center px-3">
+                                <p class="mb-1">Activity Earnings</p>
+                                <h2 class="text-center" style="font-size: 30px; font-weight:900">
+                                ₦0.00
+                                </h2>
+                            </span>
+        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body bg-warning  p-0 text-white" style="padding: 10px;">
+                            <span class="text-center px-3">
+                                <p class="mb-1">REFERRAL Earnings</p>
+                                <h2 style="font-size: 30px; font-weight:900">
+                                ₦{{ user.total_ref_ernings }}
+                                </h2>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body bg-secondary  p-0 text-white" style="padding: 10px;">
+                            <span class="text-center px-3">
+                                <p class="mb-1">TOTAL Earnings</p>
+                                <h2 style="font-size: 30px; font-weight:900">
+                                    ₦{{ user.total_earnings }}
+                                </h2>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body bg-success  p-0 text-white" style="padding: 10px;">
+                            <span class="text-center px-3">
+                                <p class="mb-1">TOTAL REFERRAL</p>
+                                <h2 style="font-size: 30px; font-weight:900">
+                                {{ user.refferal}}
+                                </h2>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+              <div class="">
+                <div class="card">
+                    <div class="card-header"><h5>Withdraw history</h5></div>
+                    <div class="card-body">
+                        {% if withdraws %}
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">amounts</th>
+                                <th scope="col">time</th>
+                                <th scope="col">satus</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for obj in withdraws %}
+                              <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>₦{{ obj.amount }}</td>
+                                <td>{{ obj.time }}</td>
+                                <td>{{ obj.status }}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                          {% else %}
+                            <h3 class="text-center">No current Widraws</h3>
+                          {% endif %}
+                    </div>
+                </div>
+              </div>
+              <p></p>
+              <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="btn" style="  border-radius: 2px; background-color: skyblue;">Withdraw</a>
+
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="alert alert-primary my-3">
+                        <p>
+                        <b class="text-danger">Note:</b> You cannot withdraw more than your available balance.<br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum <br>
+                      
+                        </div>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="number" name="amount" class="form-control" placeholder="Enter amount">
+                            
+                            <input class="btn btn-primary ml-2" type="submit" name="bttn" id=""  value="Withdraw">
+                           
+                        </form>
+                </div>
+              </div>
+            <br>
+            <br>
+            <div class="alert alert-info">
+                <b class="text-danger"><small>NOTE</small></b><hr>
+                <div class="text-center">
+                    Keep performing task to earn and to earn more head over to  the investment page purchase some package and get paid  after some days.
+
+                </div><br><br>
+                 <h6>your referral link : http://127.0.0.1:8000/ref/{{ user.slug }}</h6>
+                <hr>
+  
+                </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

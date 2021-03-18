@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<br>   
+<br>
+
+
+ <div class="container">
+      <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="text-container">
+                            <h1><span>LOFTYHEIGHTS</span> </h1>
+                            <p class="p-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                            <p class="p-small">Join our fast growing community and earn reward for completing little task.</p>
+                            {% if user.is_authenticated %}
+                            <a style="border-radius: 5px; background-color: skyblue;"  class="btn" href="{% url 'home' %}">Take a task</a>
+                            {% else %}
+                            <a style="border-radius: 5px; background-color: skyblue;"  class="btn" href="{% url 'login' %}">START NOW</a>
+                            <a style="border-radius: 5px; background-color: skyblue;" class="btn" href="{% url 'register' %}">LOGIN</a>
+                            {% endif %}
+							<br><br><p>Get your coupon code now &gt;&gt; <b><a href="{% url 'vendors' %}">Approved Vendors</a></b></p>
+                        </div> 
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="image-container">
+                            <img class="img-fluid" src="{% static 'images/communication.png'  %}" alt="alternative">
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> 
+    <!-- end of header -->
+
+
+<br>
+<br>
+     <!-- start of aboutcard -->
+    <div class="about-card">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>With us you can get income</h2>
+                   
+                </div> <!-- end of col -->
+            </div>  <!-- end of row -->
+
+               <div class="col-lg-12">
+                   <div class="row">
+                       <div class="col">
+                        <!-- Card -->
+                        <div class="card">
+                            <p></p>
+                            <br>
+                            <img class="card-image" height="70px" src="{% static 'images/services-icon-2.svg' %}" alt="alternative">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Excellent Service</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+                            </div>
+                        </div>
+                      <!-- end of card -->
+                       </div>
+
+                       <div class="col">
+                        <!-- Card -->
+                        <div class="card">
+                            <p></p>
+                            <br>
+                            <img class="card-image" height="70px" src="{% static 'images/services-icon-2.svg' %}" alt="alternative">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Excellent Service</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+                            </div>
+                        </div>
+                      <!-- end of card -->
+                       </div>
+
+                       <div class="col">
+                        <!-- Card -->
+                        <div class="card">
+                            <p></p>
+                            <br>
+                            <img class="card-image"  height="70px" src="{% static 'images/services-icon-2.svg' %}" alt="alternative">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Excellent Service</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+                            </div>
+                        </div>
+                      <!-- end of card -->
+                       </div>
+                   </div>
+               </div>
+            
+        </div>
+    </div>
+    <!-- end of aboutcard -->
+
+    <br>
+    <br>
+    <br>
+
+
+    <!-- service -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="image-container">
+                    <img class="img-fluid" src="{% static 'images/development-content.svg' %}" alt="alternative">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="text-container">
+                    <h4> How to earn on loftyheights</h4>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="media">
+                            
+                            <div class="media-body "> <span><i  style="color: skyblue;" class="fas fa-check"></i></span> Get coupon from our trusted vendors </div>
+                        </li>
+                        <li class="media">
+                        
+                            <div class="media-body">  <span><i style="color: skyblue;" class="fas fa-check"></i></span>Register with your coupon code</div>
+                        </li>
+                        <li class="media">
+                      
+                            <div class="media-body"> <span><i style="color: skyblue;" class="fas fa-check"></i></span>Login and share sponsored post to earn</div>
+                        </li>
+                        <li class="media">
+                            <div class="media-body"> <span><i style="color: skyblue;" class="fas fa-check"></i></span>Refer friends and family to earn</div>
+                        </li>
+                        <li class="media">
+                            <div class="media-body"> <span><i style="color: skyblue;" class="fas fa-check"></i></span>Get  any of our available plan</div>
+                        </li>
+                        <li class="media">
+                            <div class="media-body"> <span><i style="color: skyblue;" class="fas fa-check"></i></span>Withdraw total revenue from your wallet to local Bank Account</div>
+                        </li>
+                    </ul>
+                   
+                    <!--<a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">START NOW</a>-->
+                </div> <!-- end of text-container -->
+            </div> <!-- end of col -->
+        </div>
+    </div>
+    <!-- service  -->
+<br>
+<br>
+<br>
+
+     <!-- contact  -->
+      <div>
+               <!-- Contact Form -->
+               <div class="container contact-form">
+                   
+                <form method="post">
+                    {% csrf_token %}
+                   <div class="row">
+                    <div class="text-center">
+                        <h4>Contact Us</h4>
+                 
+                    </div>
+                    <br><br>
+                        <div class="">
+                            <div class="form-group">
+                                <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                            </div>
+                        </div>
+                    
+                    </div>
+                </form>
+    </div>
+            <!-- end of contact form -->
+      </div>
+    <!-- contact  -->
+
+{% include 'footer.html' %}
+
+   
+
+ {% endblock %}
